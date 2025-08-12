@@ -1,13 +1,16 @@
-import { icons } from '@/constants/icons'
-import React from 'react'
-import { Image, TextInput, View } from 'react-native'
+import { icons } from '@/constants/icons';
+import React from 'react';
+import { Image, TextInput, View } from 'react-native';
 
 interface Props {
   placeholder: string;
-  onPress: () => void;
+  onPress?: () => void;
+  value?: string;
+  onChangeText?: (text: string) => void;
+  editable?: boolean;
 }
 
-const SearchBar = ({ placeholder, onPress }: Props) => {
+const SearchBar = ({ placeholder, onPress, value, onChangeText, editable = true }: Props) => {
   return (
     <View
       className='flex-row items-center bg-dark-200
@@ -22,10 +25,11 @@ const SearchBar = ({ placeholder, onPress }: Props) => {
     <TextInput
       onPress={onPress}
       placeholder={placeholder}
-      value=''
-      onChangeText={() => {}}
+      value={value}
+      onChangeText={onChangeText}
       placeholderTextColor="#a8b5db"
       className='flex-1 ml-2 text-white'
+      editable={editable}
     />
     </View>
   )
